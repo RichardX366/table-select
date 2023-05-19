@@ -9,6 +9,7 @@ export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
   const [selectedUser, setSelectedUser] = useState(0);
   const [tables, setTables] = useState<(Table & { users: User[] })[]>([]);
+  const [roll, setRoll] = useState('');
 
   const fetchUsers = async () => {
     const { data: response } = await a.get<User[]>('getUsers');
@@ -46,7 +47,7 @@ export default function Home() {
         <div className='text-white'>
           <h1 className='text-2xl'>{user.name}</h1>
           <h1 className='text-2xl'>Group: {user.role || 'N/A'}</h1>
-          <div className='grid grid-cols-3 text-center mt-4 text-white gap-4'>
+          <div className='grid grid-cols-3 text-center my-4 text-white gap-4'>
             {!user.tableId &&
               tables.map((table) => (
                 <Button
@@ -64,6 +65,14 @@ export default function Home() {
                 </Button>
               ))}
           </div>
+          <Button
+            onClick={() =>
+              setRoll((Math.floor(Math.random() * 6) + 1).toString())
+            }
+          >
+            Click to Roll
+          </Button>
+          <p className='mt-4'>{roll}</p>
         </div>
       ) : (
         <div className='bg-white p-4 rounded-lg'>
