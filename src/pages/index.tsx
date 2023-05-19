@@ -27,7 +27,6 @@ export default function Home() {
   };
 
   const interval = useInterval(() => {
-    console.log('a');
     fetchTables();
     fetchUsers();
   }, 1000);
@@ -37,7 +36,7 @@ export default function Home() {
     fetchTables();
     interval.start();
     document.title = 'Table Select';
-    return interval.stop();
+    return interval.stop;
     // eslint-disable-next-line
   }, []);
 
