@@ -32,6 +32,7 @@ const main = async () => {
       'Elaina Treacy',
       'Hannah Wong',
       'Audrey Zelezniak Berezowski',
+      'Mr. Boken',
     ].map((name, i) => ({ name, id: i + 1 })),
   });
 

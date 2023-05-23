@@ -94,6 +94,36 @@ export default function Admin() {
         >
           Set
         </Button>
+        <Button
+          onClick={async () => {
+            await Promise.all(
+              users.map((user) =>
+                a.put('updateUser', {
+                  id: +user.id,
+                  role: user.name,
+                }),
+              ),
+            );
+            fetchUsers();
+          }}
+        >
+          Personal Groups
+        </Button>
+        <Button
+          onClick={async () => {
+            await Promise.all(
+              users.map((user) =>
+                a.put('updateUser', {
+                  id: +user.id,
+                  role: null,
+                }),
+              ),
+            );
+            fetchUsers();
+          }}
+        >
+          Reset Groups
+        </Button>
       </div>
       <div className='text-white'>
         {users.map((user) => (

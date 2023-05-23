@@ -6,5 +6,11 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  res.json(await prisma.user.findMany());
+  res.json(
+    await prisma.user.findMany({
+      orderBy: {
+        id: 'asc',
+      },
+    }),
+  );
 }
